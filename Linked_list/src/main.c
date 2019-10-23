@@ -9,6 +9,7 @@
 
 #include "Linked_list.h"
 int main() {
-	form_list();
+	struct node* head=form_list();
+	search_element(head);
 	return 0;
 }

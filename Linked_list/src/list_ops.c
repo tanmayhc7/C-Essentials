@@ -8,6 +8,7 @@ void add_node_start(struct node** head, int val)
 	temp->val=val;
 	temp->next=(*head);
 	(*head)=temp;
+	size++;
 }
 
 //add node mid
@@ -22,6 +23,7 @@ void add_node_mid(struct node** head,int pos, int val)
 	}
 	temp->next=prev->next;
 	prev->next=temp;
+	size++;
 }
 
 //print
@@ -40,7 +42,7 @@ void printList(struct node* head)
 	printf("\n");
 }
 
-void form_list()
+struct node* form_list()
 {
 	struct node* head = NULL;
 	add_node_start(&head, 6);
@@ -50,9 +52,12 @@ void form_list()
 	add_node_start(&head, 1);
 	add_node_mid(&head,3,5);
 	add_node_start(&head, 0);
-	printList(head);
+	printList(head); //0123456
+	printf("size= %d\n",size);
 	delete_node(&head,4);
-	printList(head);
+	printList(head);//012356
+	printf("size= %d\n",size);
+	return head;
 }
 
 void delete_node(struct node** head,int val)
@@ -76,5 +81,34 @@ void delete_node(struct node** head,int val)
 	}
 	if (temp == NULL) return;
 	prev->next = temp->next;
+	size--;
 	free(temp);
+}
+
+void search_element_iterative(struct node* head,int val)
+{
+	struct node* temp=head;
+	bool flag=0;
+	while(temp)
+	{
+		if(temp->val==val)
+		{
+			flag=1;break;
+		}
+		temp=temp->next;
+	}
+	(flag==1) ? printf("%d found",val) : printf("%d not found",val);
+}
+
+bool search_element_recursive(struct node* head,int val)
+{
+	if(!head) return 0;
+	if(head->val==val) return 1;
+	return search_element_recursive(head->next,val);
+}
+
+void search_element(struct node* head)
+{
+	search_element_recursive(head,5)? printf("5 found\n"): printf("5 not found\n");
+	search_element_iterative(head,4);
 }
