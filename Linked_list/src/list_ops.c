@@ -111,4 +111,51 @@ void search_element(struct node* head)
 {
 	search_element_recursive(head,5)? printf("5 found\n"): printf("5 not found\n");
 	search_element_iterative(head,4);
+	int n=4;
+	int nth_node=get_nth_node(head,n);
+	printf("\n%dth element is: %d",n,nth_node);
+	getNthfromlast(head,n);
+	printMid(head);
+}
+
+int get_nth_node(struct node* head,int n)
+{
+	struct node* temp=head;
+	while(temp)
+	{
+		temp=temp->next;
+		n--;
+		if(n==0) return temp->val;
+	}
+	return 0;
+}
+
+void getNthfromlast(struct node* head,int n)
+{
+	struct node* temp=head;
+	struct node* ref=head;
+	int backup=n;
+	while(n)
+	{
+		ref=ref->next;
+		n--;
+	}
+	while(ref)
+	{
+		temp=temp->next;
+		ref=ref->next;
+	}
+	printf("\n%dth element from the end is %d",backup,temp->val);
+}
+
+void printMid(struct node* head)
+{
+	struct node* slow=head;
+	struct node* fast=head;
+	while(fast && fast->next)
+	{
+		slow=slow->next;
+		fast=fast->next->next;
+	}
+	printf("\nMiddle element is %d",slow->val);
 }

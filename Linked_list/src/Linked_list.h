@@ -17,4 +17,7 @@ void delete_node(struct node** head,int val);
 void search_element_iterative(struct node* head,int val);
 bool search_element_recursive(struct node* head,int val);
 void search_element(struct node* head);
+int get_nth_node(struct node* head,int n);
+void getNthfromlast(struct node* head,int n);
+void printMid(struct node* head);
 #endif
