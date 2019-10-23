@@ -8,6 +8,8 @@ struct node
 	struct node* next;
 };
 void add_node_start(struct node** head, int val);
+void add_node_mid(struct node** head, int pos, int val);
 void printList(struct node* head);
 void form_list();
+void delete_node(struct node** head,int val);
 #endif
