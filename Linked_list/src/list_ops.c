@@ -51,11 +51,14 @@ struct node* form_list()
 	add_node_start(&head, 3);
 	add_node_start(&head, 4);
 	add_node_mid(&head,3,5);
+	add_node_start(&head, 2);
 	add_node_start(&head, 6);
-	printList(head); //0123456
+	add_node_start(&head, 3);
+	add_node_start(&head, 0);
+	printList(head);
 	printf("size= %d\n",size);
 	delete_node(&head,4);
-	printList(head);//012356
+	printList(head);
 	printf("size= %d\n",size);
 	return head;
 }
@@ -255,4 +258,28 @@ void swap(struct node *a,struct node *b)
 	int temp=a->val;
 	a->val=b->val;
 	b->val=temp;
+}
+
+void removeDup_sorted(struct node* head)
+{
+	struct node* cur=head->next;
+	struct node* prev=head;
+	struct node* temp=NULL;
+	printf("\nRemoving duplicates:\n");
+	while(cur)
+	{
+		if(prev->val==cur->val)
+		{
+			temp=cur;
+			cur=cur->next;
+			prev->next=cur;
+			free(temp);
+		}
+		else
+		{
+			cur=cur->next;
+			prev=prev->next;
+		}
+	}
+	printList(head);
 }

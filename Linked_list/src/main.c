@@ -13,5 +13,7 @@ int main() {
 	search_element(head);
 	loop(head);
 	sort(head);
+	removeDup_sorted(head);
+	free(head);
 	return 0;
 }
