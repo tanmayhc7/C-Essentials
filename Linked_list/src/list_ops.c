@@ -283,3 +283,46 @@ void removeDup_sorted(struct node* head)
 	}
 	printList(head);
 }
+
+void swapNodes(struct node* head,int x,int y)
+{
+	if (x == y) return;
+	struct node *prev1 = NULL;
+	struct node *cur1 = head;
+    while (cur1 && cur1->val != x)
+    {
+	   prev1 = cur1;
+	   cur1 = cur1->next;
+    }
+
+    struct node *prev2 = NULL;
+    struct node *cur2 = head;
+    while (cur2 && cur2->val != y)
+    {
+	   prev2 = cur2;
+	   cur2 = cur2->next;
+    }
+
+    if (cur1 == NULL || cur2 == NULL)
+           return;
+
+	// If x is not head of linked list
+	if (prev1 != NULL)
+	   prev1->next = cur2;
+	else // Else make y as new head
+	   head = cur2;
+
+	// If y is not head of linked list
+	if (prev2 != NULL)
+	   prev2->next = cur1;
+	else  // Else make x as new head
+	   head = cur1;
+
+	// Swap next pointers
+	struct node *temp = cur2->next;
+	cur2->next = cur1->next;
+	cur1->next  = temp;
+
+	printf("\nNew List\n");
+	printList(head);
+}

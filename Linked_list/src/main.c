@@ -14,6 +14,7 @@ int main() {
 	loop(head);
 	sort(head);
 	removeDup_sorted(head);
+	swapNodes(head,1,6);
 	free(head);
 	return 0;
 }

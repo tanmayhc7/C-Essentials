@@ -28,4 +28,5 @@ void sort(struct node* head);
 void bubbleSort(struct node* head);
 void swap(struct node *a,struct node *b);
 void removeDup_sorted(struct node* head);
+void swapNodes(struct node* head,int x,int y);
 #endif
