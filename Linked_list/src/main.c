@@ -11,5 +11,6 @@
 int main() {
 	struct node* head=form_list();
 	search_element(head);
+	loop(head);
 	return 0;
 }

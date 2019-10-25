@@ -159,3 +159,61 @@ void printMid(struct node* head)
 	}
 	printf("\nMiddle element is %d",slow->val);
 }
+
+void loop(struct node* head)
+{
+	create_loop(head);
+	detect_loop_find_length_delete_loop(head);
+}
+
+void detect_loop_find_length_delete_loop(struct node* head)
+{
+	struct node* slow=head;
+	struct node* fast=head;
+	bool flag=0;
+	while(fast && slow && fast->next)
+	{
+		slow=slow->next;
+		fast=fast->next->next;
+		if(slow==fast)
+		{
+			flag=1;break;
+		}
+	}
+	int loop_length=0;
+	if(flag)
+	{
+		while(slow->next!=fast)
+			{
+				slow=slow->next;
+				loop_length++;
+			}
+		printf("\nLoop length= %d",loop_length);
+		slow->next=NULL;
+		printf("\nLoop Deleted");
+	}
+	else
+	{
+		printf("\nLoop not detected");
+	}
+}
+
+void create_loop(struct node* head)
+{
+	printf("\nCreating loop");
+	struct node* node_1=head;
+	struct node* node_2=head;
+	while(node_1->next)
+	{
+		node_1=node_1->next;
+	}
+	time_t t;
+	srand((unsigned) time(&t));
+	int temp= rand() %size;
+	for(int i=0;i<temp;i++)
+	{
+		node_2=node_2->next;
+	}
+	node_1->next=node_2;
+
+}
