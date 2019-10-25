@@ -45,13 +45,13 @@ void printList(struct node* head)
 struct node* form_list()
 {
 	struct node* head = NULL;
-	add_node_start(&head, 6);
-	add_node_start(&head, 4);
-	add_node_start(&head, 3);
-	add_node_start(&head, 2);
-	add_node_start(&head, 1);
-	add_node_mid(&head,3,5);
 	add_node_start(&head, 0);
+	add_node_start(&head, 1);
+	add_node_start(&head, 2);
+	add_node_start(&head, 3);
+	add_node_start(&head, 4);
+	add_node_mid(&head,3,5);
+	add_node_start(&head, 6);
 	printList(head); //0123456
 	printf("size= %d\n",size);
 	delete_node(&head,4);
@@ -216,4 +216,43 @@ void create_loop(struct node* head)
 	}
 	node_1->next=node_2;
 
+}
+
+void sort(struct node* head)
+{
+	bubbleSort(head);
+	printf("\nSorted List\n");
+	printList(head);
+}
+
+void bubbleSort(struct node* head)
+{
+
+	if(!head) return;
+	int swapped=1;
+	struct node*cur=head;
+	struct node*prev=head;
+	while(swapped && prev->next)
+	{
+		swapped=0;
+		while(cur->next)
+		{
+			if(cur->val > cur->next->val)
+			{
+				//swap data and not nodes
+				swap(cur,cur->next);
+				swapped=1;
+			}
+			cur=cur->next;
+		}
+		cur=head;
+		prev=prev->next;
+	}
+}
+
+void swap(struct node *a,struct node *b)
+{
+	int temp=a->val;
+	a->val=b->val;
+	b->val=temp;
 }

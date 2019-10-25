@@ -24,4 +24,7 @@ void printMid(struct node* head);
 void loop(struct node* head);
 void detect_loop_find_length_delete_loop(struct node* head);
 void create_loop(struct node* head);
+void sort(struct node* head);
+void bubbleSort(struct node* head);
+void swap(struct node *a,struct node *b);
 #endif
