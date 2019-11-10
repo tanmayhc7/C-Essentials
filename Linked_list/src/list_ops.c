@@ -223,9 +223,77 @@ void create_loop(struct node* head)
 
 void sort(struct node* head)
 {
-	bubbleSort(head);
+
+	mergeSort(&head);
+	//bubbleSort(head);
 	printf("\nSorted List\n");
 	printList(head);
+}
+
+void mergeSort(struct node** head)
+{
+	struct node* h = *head;
+	struct node* a=NULL;
+	struct node* b=NULL;
+
+	if(!h || !h->next) return;
+
+	/* Split head into 'a' and 'b' sublists */
+	FrontBackSplit(h, &a, &b);
+
+    /* Recursively sort the sublists */
+    mergeSort(&a);
+    mergeSort(&b);
+
+    /* answer = merge the two sorted lists together */
+    *head = SortedMerge(a, b);
+}
+
+struct node* SortedMerge(struct node* a, struct node* b)
+{
+	struct node* result = NULL;
+	/* Base cases */
+	if (a == NULL)
+		return (b);
+	else if (b == NULL)
+		return (a);
+
+	/* Pick either a or b, and recur */
+	if (a->val <= b->val) {
+		result = a;
+		result->next = SortedMerge(a->next, b);
+	}
+	else {
+		result = b;
+		result->next = SortedMerge(a, b->next);
+	}
+	return (result);
+}
+
+/* Split the nodes of the given list into front and back halves,
+   and return the two lists using the reference parameters.
+   If the length is odd, the extra node should go in the front list.
+   Uses the fast/slow pointer strategy. */
+void FrontBackSplit(struct node* source,struct node** frontRef, struct node** backRef)
+{
+    struct node* fast;
+    struct node* slow;
+    slow = source;
+    fast = source->next;
+
+    /* Advance 'fast' two nodes, and advance 'slow' one node */
+    while (fast != NULL) {
+        fast = fast->next;
+        if (fast != NULL) {
+            slow = slow->next;
+            fast = fast->next;
+        }
+    }
+
+    /* 'slow' is before the midpoint in the list, so split it in two at that point. */
+    *frontRef = source;
+    *backRef = slow->next;
+    slow->next = NULL;
 }
 
 void bubbleSort(struct node* head)
@@ -326,3 +394,5 @@ void swapNodes(struct node* head,int x,int y)
 	printf("\nNew List\n");
 	printList(head);
 }
+
+
