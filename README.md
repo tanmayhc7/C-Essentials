@@ -1,4 +1,4 @@
-# DS-in-C
+# C-Essentials for Interviews
 Clone the project repository using:
 
 ``` 
