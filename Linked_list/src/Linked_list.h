@@ -4,12 +4,17 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+#include <stdint.h>
+#include <sys/time.h>
+#include <unistd.h>
 struct node
 {
 	int val;
 	struct node* next;
 };
 static int size=0;
+clock_t start, end;
+double cpu_time_used;
 void add_node_start(struct node** head, int val);
 void add_node_mid(struct node** head, int pos, int val);
 void printList(struct node* head);
