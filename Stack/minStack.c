@@ -1,7 +1,7 @@
 /**************************************
 	Time: O(1) Space:O(1) for min array
 	This implementation will only help retrieve minimum values in O(1) Space & Time
-	It stores incorrect data inside the stack
+	Note: Stack does not contain exact values pushed in it.
 ***************************************/
 
 #include <stdio.h>
