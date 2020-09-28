@@ -5,6 +5,7 @@
 ***************************************/
 
 #include <stdio.h>
+#include <limits.h>
 
 typedef struct {
     int *arr;
@@ -16,11 +17,16 @@ MinStack* minStackCreate(void) {
     MinStack* stack=(MinStack*)malloc(sizeof(MinStack));
     stack->arr=(int*)malloc(sizeof(int)*10);
     stack->top_idx=-1;
-    stack->min=32655;
+    stack->min=INT_MAX;
     return stack;
 }
 
 void minStackPush(MinStack* stack, int x) {
+	if(stack->top_idx>=10){	
+		printf("Overflow\n");
+		return;	
+	}
+	
 	if(stack->top_idx<0){
 		stack->arr[++stack->top_idx]=x;
 		stack->min=x;
@@ -37,9 +43,15 @@ void minStackPush(MinStack* stack, int x) {
 }
 
 void minStackPop(MinStack* stack) {
-	if(stack->top_idx<0){	return;	}
+	if(stack->top_idx<0){	
+		printf("Underflow\n");
+		return;	
+	}
 	if(stack->arr[stack->top_idx] < stack->min){
+		printf("Popped: %d\t",stack->min);
 		stack->min= 2*stack->min - stack->arr[stack->top_idx--];
+	} else{
+		printf("Popped: %d\t",stack->arr[(stack->top_idx)--]);
 	}
 }
 
@@ -63,11 +75,11 @@ int main(void){
 	minStackPush(stack,-20);
 	minStackPush(stack,-100);
 	printf("Min: %d \n", minStackGetMin(stack));
-	minStackPop(stack);
-	printf("Min: %d\n", minStackGetMin(stack));
-	minStackPop(stack);
-	printf("Min: %d\n", minStackGetMin(stack));
-	
+	minStackPop(stack); printf("Min: %d\n", minStackGetMin(stack));
+	minStackPop(stack);	printf("Min: %d\n", minStackGetMin(stack));
+	minStackPop(stack);	printf("Min: %d\n", minStackGetMin(stack));
+	minStackPop(stack);	printf("Min: %d\n", minStackGetMin(stack));
+	minStackPop(stack);	printf("Min: %d\n", minStackGetMin(stack));
 	
 	return 0;
 }
