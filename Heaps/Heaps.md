@@ -19,10 +19,9 @@ How is Binary Heap represented?
 A Binary Heap is a Complete Binary Tree. A binary heap is typically represented as an array.
 
 The root element will be at Arr[0].
-Below table shows indexes of other nodes for the ith node, i.e., Arr[i]:
-Arr[(i-1)/2]	---->Returns the parent node
-Arr[(2*i)+1] --->Returns the left child node
-Arr[(2*i)+2] --->Returns the right child node
+Below table shows indexes of other nodes for the ith node, i.e., Arr[i]: <br/>
+Arr[(i-1)/2] --->Returns the parent node<br/>Arr[(2*i)+1] --->Returns the left child node<br/>
+Arr[(2*i)+2] --->Returns the right child node<br/>
 The traversal method use to achieve Array representation is Level Order
 
 Operations on Min Heap:
