@@ -37,7 +37,7 @@ Operations on Min Heap:
 
 Time Complexity: O(nlog(n)), since each call to Heapify costs O(log(n)) and Build-Heap makes O(n) such calls.
 
-| Operation | find-max | delete-max | insert | increase-key | meld |
+| Operation | find-max | delete-max | insert | increase-key | meld |<br />
 | Binary | Θ(1) | Θ(log n) | O(log n) | O(log n) | Θ(n) |
 
 (meld: join 2 heaps to form a heap)
