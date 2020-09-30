@@ -35,3 +35,8 @@ Operations on Min Heap:
 
 5) delete(): Deleting a key also takes O(Logn) time. We replace the key to be deleted with minum infinite by calling decreaseKey(). After decreaseKey(), the minus infinite value must reach root, so we call extractMin() to remove the key.
 
+Time Complexity: O(nlog(n)), since each call to Heapify costs O(log(n)) and Build-Heap makes O(n) such calls.
+
+Operation	find-max	delete-max	insert	increase-key  meld(join 2 heaps)
+Binary	Θ(1)	Θ(log n)	O(log n)	O(log n)	  Θ(n)
+(meld: join 2 heaps to form a heap)
