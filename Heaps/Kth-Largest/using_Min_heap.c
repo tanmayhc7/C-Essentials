@@ -26,18 +26,18 @@ my_heap* heap_init(int k){
 }
 
 //Min heap
-void heapify_top_bottom(my_heap* h,int parent_node,int size){
+void heapify_top_bottom(my_heap* h,int parent_node){
     int left=(2*parent_node)+1;
     int right=(2*parent_node)+2;
     int temp;
     int min=parent_node;
     
     
-    if(left<size && h->arr[left] < h->arr[parent_node]){
+    if(left<=h->i && h->arr[left] < h->arr[parent_node]){
         min=left;
     }
     
-    if(right<size && h->arr[right] < h->arr[min]){
+    if(right<=h->i && h->arr[right] < h->arr[min]){
         min=right;
     }
     
@@ -46,7 +46,7 @@ void heapify_top_bottom(my_heap* h,int parent_node,int size){
         h->arr[min]=h->arr[parent_node];
         h->arr[parent_node]=temp;
         
-        heapify_top_bottom(h,min,size);
+        heapify_top_bottom(h,min);
     }    
 }
 
@@ -87,7 +87,7 @@ int findKthLargest(int* nums, int ns, int k){
     for(int i=k;i<ns;i++){
         if(nums[i]>h->arr[0]){
             h->arr[0]=nums[i];
-            heapify_top_bottom(h,0,k);
+            heapify_top_bottom(h,0);
         }
     }
     
