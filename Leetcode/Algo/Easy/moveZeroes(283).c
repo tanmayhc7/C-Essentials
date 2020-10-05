@@ -3,21 +3,7 @@
  */
 void moveZeroes(int* nums, int N)
 {
-    /*
-    for(int i=0;i<N;i++)
-    {
-        for(int j=0;j<N-1;j++)
-        {
-            if(nums[j]==0)
-            {
-                int temp=nums[j+1];
-                nums[j+1]=nums[j];
-                nums[j]=temp;
-            }
-        }
-    }
-    */
-        int totalZeros = 0;
+    int totalZeros = 0;
 
     for(int i = 0; i < N; i++) {
         if(nums[i] == 0) {
