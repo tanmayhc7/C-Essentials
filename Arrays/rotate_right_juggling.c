@@ -7,6 +7,7 @@ int get_gcd(int a,int b){
 
 void rotate_right(int* arr,int size,int d){
 	if(d>=size) d=d%size;
+	if(!d) return;
 	int gcd=get_gcd(size,d);
 	int j,k,temp;
 	int i=size-1;

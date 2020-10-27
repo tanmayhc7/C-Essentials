@@ -26,6 +26,7 @@ int get_gcd(int a,int b){
 
 void rotate_left(int* arr,int size,int d){
 	if(d>=size) d=d%size;
+	if(!d) return;
 	int gcd=get_gcd(size,d);
 	printf("GCD: %d\n",gcd);
 	int j,k,temp;
