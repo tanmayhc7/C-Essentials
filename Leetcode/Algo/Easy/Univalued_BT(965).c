@@ -20,32 +20,12 @@ The number of nodes in the given tree will be in the range [1, 100].
 Each node's value will be an integer in the range [0, 99].
 *************************/
 
-typedef struct TreeNode t;
-
-void helper(t* root,bool* f){
-    if(!root) return;
-    if(root->left){
-        if(root->left->val!=root->val) {
-            *f=0; return;
-        }
-        else{
-            helper(root->left,f);
-        }
-    }
-    if(root->right){
-        if(root->right->val!=root->val) {
-            *f=0; return;
-        }
-        else{
-            helper(root->right,f);
-        }
-    }
+bool isUnivalTree(struct TreeNode* root){
+    if(!root) return 1;
     
-}
-
-bool isUnivalTree(t* root){
-    bool f=1;
-    helper(root,&f);
-    return f;
+    if(root->left && root->left->val!=root->val) return 0;
+    if(root->right && root->right->val!=root->val) return 0;
     
+    
+    return isUnivalTree(root->left) && isUnivalTree(root->right);
 }
