@@ -36,6 +36,8 @@ Constraints:
 Each tree has at most 5000 nodes.
 Each node's value is between [-10^5, 10^5].
 **************************************************/
+//Use Inorder traversal to copy tree elements into array in sorted manner and then its same as merging two sorted arrays
+
 typedef struct TreeNode t;
 
 void get_Tree_elements(t* root,int** arr,int* size){
