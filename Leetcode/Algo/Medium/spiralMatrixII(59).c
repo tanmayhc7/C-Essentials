@@ -24,7 +24,7 @@ Output:
  */
 int** generateMatrix(int n, int* returnSize, int** returnColumnSizes){
 
-    *returnSize=n; **returnColumnSizes=n;
+    *returnSize=n;
     int **m = (int **)malloc(n * sizeof(int *));
     *returnColumnSizes=malloc(sizeof(int)*n);
     for(int i=0; i< n; i++)
